@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main-container %}
+        <!-- main section start -->
+        <div class="row mt-2">
+          <a class="navbar-brand" href="#"><img src="{% static 'images/NY5.jpg' %}" height="550px" width="100%" class="rounded mx-auto"></a>
+      </div>
+        <div class="row ">
+          <div class="col-md-3 fs-5 fw-5 fst-italic fw-bolder">
+            <span class="border border-black"></span>
+            <h5>■ filter by category</h5><hr>
+              <a href="/home">● All</a><br>
+              <a href="/catfilter/1">● Makeup</a><br>
+              <a href="/catfilter/2">● SkinCare</a><br>
+              <a href="/catfilter/3">● HairCare</a><br>
+              <a href="/catfilter/4">● Fragrances</a><br><br>
+            <h5>■ sort by price</h5><hr>
+              <a href="/sortbyprice/0">● High to low</a><br>
+              <a href="/sortbyprice/1">● Low to high</a><br><br>
+            <h5>■  Filter by price</h5><hr>
+            <form method="GET" action="/filterbyprice">
+              <div class="mb-3">
+                <label for="max" class="form-label">● Max </label>
+                <input type="number" class="form-control" name="maxi" id="exampleInputPassword1">
+              </div>
+              <div class="mb-3">
+                <label for="min" class="form-label">● Min </label>
+                <input type="number" name="min" class="form-control" id="exampleInputPassword1">
+              </div>
+              <button type="submit" class="btn btn-primary" value="search">Submit</button>
+            </form>
+            <span class="border border-black gap-3"></span>
+            <img src="/static/images/deals.jpg" height="100px", width="400vw">           
+            <img src="/static/images/nyp5.jpg" height="400px", width="400vw">
+            <img src="/static/images/nyp6.jpg" height="300px", width="400vw">
+            <img src="/static/images/nyp7.jpg" height="300px", width="400vw">
+            <img src="/static/images/nyp8.jpg" height="300px", width="400vw">
+            <img src="/static/images/nyp9.jpg" height="400px", width="400vw">
+            <img src="/static/images/nyp1.jpg" height="300px", width="400vw">
+            <img src="/static/images/nyp2.jpg" height="300px", width="400vw">
+            <img src="/static/images/nyp3.jpg" height="300px", width="400vw">
+            <img src="/static/images/nyp4.jpg" height="300px", width="400vw">
+            
+          </div>
+          
+            <div class="col-md-9 mt-2 p-1">
+              <div class="row gap-3" >  
+                {% for i in products %} 
+                <div class="card" style="width: 21rem;">
+                  <img src="{{i.pimage.url}}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">{{i.pname}}</h5>
+                    <p class="card-text">Price : {{i.price}}Rs</p>
+                    {% if i.category == 1 %}
+                    <p class="card-text">category : Makeup</p>
+                    {% elif i.category == 2 %}
+                    <p class="card-text">category : SkinCare</p>
+                    {% elif i.category == 3 %}
+                    <p class="card-text">category : HairCare</p>
+                    {% elif i.category == 4 %}
+                    <p class="card-text">category : Fragrances</p>
+                    {% endif %}
+
+                    <a href="/productsdetail/{{i.id}}" class="btn btn-primary">see details</a>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>                  
+            </div> 
+        </div>
+{% endblock main-container %}

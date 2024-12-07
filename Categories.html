@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main-container %}
+        <div class="row mt-2">
+            <a class="navbar-brand" href="#"><img src="{% static 'images/jk.jpg' %}" height="600px" width="100%" class="rounded mx-auto"></a>
+        </div>   
+        <div class="col-md-12 mt-2 ms-3 p-1">
+            <div class="row gap-4" >
+                {% for i in brands %}
+                <div class="card" style="width: 22rem;">
+                    <img src="{{i.pimage.url}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{i.bname}}</h5>
+                        <p class="card-text">Price : {{i.price}}Rs</p>
+                        {% if i.category == 1 %}
+                        <p class="card-text">category : Nykaa</p>
+                        {% elif i.category == 2 %}
+                        <p class="card-text">category : LAKME</p>
+                        {% elif i.category == 3 %}
+                        <p class="card-text">category : LOREAL PARIS</p>
+                        {% elif i.category == 4 %}
+                        <p class="card-text">category : MAYBELLINE</p>
+                        {% elif i.category == 5 %}
+                        <p class="card-text">category : Mac</p>
+                        {% endif %}
+                        <a href="/branddetail/{{i.id}}" class="btn btn-primary">see details</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+<!-- main section end -->
+
+<!-- header end -->
+    {% endblock main-container %}
+
+
+
+

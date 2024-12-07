@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat&family=Sacramento&display=swap"
+        rel="stylesheet">
+    <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
+    <title>View</title>
+    <link rel="stylesheet" href="/static/profile.css">
+    <style>
+        body{
+            background-color: rgb(241, 131, 215);
+            background-image: url(/static/images/Bg2.jpeg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="col-md-3 fs-5 fw-5 fw-bolder">
+        <a href="index.html" class="logo">My Profile</a>
+        {% if user.is_authenticated %}
+        <div class="profile-box">
+            <a href="/profile/">
+                <img 
+                class="profile-image"
+                src="{ % static'/images/profile-icon.svg' %}"
+                alt=""
+                />
+            </a>
+            <h3 class="User-name"><a href="/profile">{{uname}}</a></h3>
+        </div>
+        {% else %}
+        <h3 class="signUp-login"><a href="/ulogin">Login/Sign Up</a></h3>
+        {% endif %}
+    </header>
+
+    <main>
+        <div class="graphics">
+            <img class='graphic-img' src="/static/images/profile-graphic.svg" alt="">
+        </div>
+
+        <div class="profile-info">
+            <div class="user-profile-image-box">
+            
+                <form class="user-profile-image-box"     action="#">
+                    <lable for="img"
+                    ><img
+                        class="profile-image"
+                        src="{{request.user.profile}}"
+                        alt=""/></lable>
+                    <input
+                        style="visibility: hidden; width:0; height: 0;"
+                        type="image"
+                        id="img"
+                        name="img"
+                        />
+                        
+                  </form>
+            </div>
+
+            <div class="user-info">
+                <div class="label-data">
+                    <div class="label">Name</div>
+
+                    <div class="data">Nahida Dongre</div>
+                </div>
+
+                <div class="label-data">
+                    <div class="label">Username</div>
+
+                    <div class="data">Nahida24</div>
+                </div>
+
+                <div class="label-data">
+                    <div class="label">Gmail</div>
+
+                    <div class="data">NahidaDongre@gmail.com</div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
+
